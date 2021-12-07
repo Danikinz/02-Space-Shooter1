@@ -1,23 +1,24 @@
 extends Node2D
 
-var rotation_speed = 3.0
-var Weapon = null
-var Weapons = null
+var velocity = Vector2.ZERO
+var speed = .066
+var Bullet1 = load("res://Bullet.tscn")
+onready var Bullets = get_node("/root/Game/Bullets")
 
-func _ready():
-	Weapon = preload("res://Weapon.tscn")
-	pass
 
 func _physics_process(_delta):
+	velocity += get_input()*speed
+	position += velocity 
+	if Input.is_action_pressed("shoot"):
+		var bullet1 = Bullet1.instance()
+		bullet1.position = position
+		Bullets.add_child(bullet1)
+	
+	
+func get_input():
+	var input_vector = Vector2.ZERO 
 	if Input.is_action_pressed("left"):
-		rotation_degrees -= rotation_speed
+		input_vector += Vector2(-1, 0)
 	if Input.is_action_pressed("right"):
-		rotation_degrees += rotation_speed
-	if Input.is_action_just_pressed("shoot") and Weapon != null:
-		var weapon = Weapon.instance()
-		weapon.position = position + Vector2(0,-140).rotated(rotation)
-		weapon.rotation = rotation
-		if Weapons == null:
-			Weapons = get_node_or_null("/root/Game/Weapons")
-		if Weapons != null:
-			Weapons.add_child(weapon)
+		input_vector += Vector2(1, 0)
+	return input_vector 

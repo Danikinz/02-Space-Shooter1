@@ -55,6 +55,11 @@ menu={
  ]
 }
 
-[rendering]
+[layer_names]
 
-environment/default_environment="res://default_env.tres"
+2d_render/layer_1="World"
+2d_render/layer_2="Player"
+2d_render/layer_3="Enemy"
+2d_render/layer_4="Meteor"
+2d_render/layer_5="Bullet"
+2d_render/layer_6="Enemy_bullet"

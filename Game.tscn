@@ -1,16 +1,36 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/ship.png" type="Texture" id=1]
+[ext_resource path="res://Assets/spaceshooter background.jpg" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Assets/rocket.png" type="Texture" id=3]
 
 [node name="Game" type="Node2D"]
 
 [node name="Weapons" type="Node2D" parent="."]
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2( 512, 300 )
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( -71.377, -33.0928 )
+scale = Vector2( 1.33447, 1.37093 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Meteors" type="Node2D" parent="."]
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Explosions" type="Node2D" parent="."]
+
+[node name="Player" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 0, -1 )
-texture = ExtResource( 1 )
+position = Vector2( 692.809, 282.907 )
+scale = Vector2( 0.727273, 0.68 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
+position = Vector2( 692.809, 282.907 )
+scale = Vector2( 0.727273, 0.68 )
+polygon = PoolVector2Array( 12.5, -34.9, 16.2, -14.5, 17.1, -14.5, 35.8, -2.7, 42.6, -10.5, 49.3, -10.5, 49.5, 24.7, 46.6, 29.5, 42.7, 29.5, 39.7, 26.5, 16.4, 31.2, 11.9, 37.5, -12.2, 37.5, -18.4, 30.5, -22.8, 30.5, -39.8, 25.5, -45.2, 29.8, -47.5, 28.8, -47.5, 27.3, -49.5, 25.3, -49.5, -9.5, -48.9, -9.5, -41.5, -10.9, -41.5, -8.4, -35.9, -3.5, -17.5, -12.8, -12.5, -34.9, -12.5, -37.5, 12.5, -37.5 )
