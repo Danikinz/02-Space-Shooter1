@@ -3,7 +3,7 @@ extends Node2D
 var velocity = Vector2.ZERO
 var speed = .066
 var Bullet1 = load("res://Bullets/Bullet.tscn")
-var Bullet2 = load("res://Bullet2/Bullet2.tscn")
+var Bullet2 = load("res://Bullets/Bullet2.tscn")
 onready var Bullets = get_node("/root/Game/Bullets")
 
 
